@@ -9,10 +9,7 @@
               <h1>Lesson Plans</h1>
             </v-col>
             <v-col cols="auto">
-              <v-btn color="primary white--text">
-                <v-icon left>mdi-plus</v-icon>
-                New Lesson Plan
-              </v-btn>
+              <LessonDialog />
             </v-col>
           </v-row>
 
@@ -23,18 +20,20 @@
 
           <v-tabs-items v-model="tab">
             <v-tab-item>
-              <v-list>
-                <v-list-item v-for="lesson of ground" :key="lesson.title" to="/lesson">
+              <v-list v-if="ground.length">
+                <v-list-item v-for="lesson of ground" :key="lesson.title" :to="`/lesson/${lesson.id}`">
                   <v-list-item-title>{{ lesson.title }}</v-list-item-title>
                 </v-list-item>
               </v-list>
+              <p class="mt-4" v-else>No ground lessons available</p>
             </v-tab-item>
             <v-tab-item>
-              <v-list>
-                <v-list-item v-for="lesson of flight" :key="lesson.title" to="/lesson">
+              <v-list v-if="flight.length">
+                <v-list-item v-for="lesson of flight" :key="lesson.title" :to="`/lesson/${lesson.id}`">
                   <v-list-item-title>{{ lesson.title }}</v-list-item-title>
                 </v-list-item>
               </v-list>
+              <p class="mt-4" v-else>No flight lessons available</p>
             </v-tab-item>
           </v-tabs-items>
         </v-card-text>
@@ -45,19 +44,25 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'IndexPage',
 
   data: () => ({
     tab: 0,
-    flight: [
-      { title: 'Auto-rotations' },
-      { title: 'Vortex Ring State'}
-    ],
-    ground: [
-      { title: 'Auto-rotations' },
-      { title: 'Vortex Ring State'}
-    ]
-  })
+  }),
+
+  computed: {
+    ...mapState(['lessons']),
+
+    flight() {
+      return this.lessons.filter(l => l.category === 'flight');
+    },
+
+    ground() {
+      return this.lessons.filter(l => l.category === 'ground');
+    }
+  },
 }
 </script>

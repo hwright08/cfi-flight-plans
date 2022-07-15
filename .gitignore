@@ -91,3 +91,5 @@ sw.*
 
 firebase*
 firestore*
+*.firebase
+.firebase/

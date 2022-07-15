@@ -2,6 +2,8 @@
   <v-app>
     <v-app-bar fixed app color="primary white--text">
       <v-toolbar-title>CFI Lesson Plans</v-toolbar-title>
+      <v-spacer />
+      <v-btn text to="/" color="white">Lesson List</v-btn>
     </v-app-bar>
     <v-main class="grey lighten-3">
       <Nuxt />
