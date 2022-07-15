@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/firebase": "^8.2.2",
     "core-js": "^3.19.3",
+    "dayjs": "^1.11.3",
+    "firebase": "^9.9.0",
     "nuxt": "^2.15.8",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
@@ -20,5 +23,17 @@
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.12.3"
-  }
+  },
+  "description": "## Build Setup",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hwright08/cfi-flight-plans.git"
+  },
+  "author": "Haley Wright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hwright08/cfi-flight-plans/issues"
+  },
+  "homepage": "https://github.com/hwright08/cfi-flight-plans#readme"
 }
